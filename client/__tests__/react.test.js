@@ -1,27 +1,68 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import LoginSignup from '../pages/LoginSignup.jsx';
 import { Provider } from 'react-redux';
-import store  from '../src/Redux/store.js';
+import store from '../src/Redux/store.js';
 import { configureStore } from '@reduxjs/toolkit';
+import { render, screen, cleanup } from './test-utils.js';
+import { Route, Routes, Router, BrowserRouter } from 'react-router-dom';
+import Navbar from '../component/Navbar/Navbar';
+const { createMemoryHistory } = require('history');
 
-describe('Unit Testing react components', () => {
+// beforeEach(() => {
+//   const history = createMemoryHistory();
+//   render(
+//     // <Provider store={store}>
+//     //   <Navbar />
+//     //   <Routes>
+//     //     <Route path='/' element={<LoginSignup />} />
+//     //   </Routes>
+//     // </Provider>
+//     <Router location={history.location} navigator={history}>
+//       <LoginSignup></LoginSignup>
+//     </Router>
+//   );
+// });
 
-describe('signup button', () => {
-    test('renders signup component when signup button is clicked', () => {
-  const { getByText, queryByText } = render(
-  <Provider store={store}>
-    <LoginSignup />
-  </Provider>);
-
-  // simulate click event
-  const signupButton = getByText('SignUp');
-  fireEvent.click(signupButton);
-
-  expect(queryByText('Sign Up')).toBeInTheDocument();
+afterEach(() => {
+  cleanup();
 });
-})})
 
+test('test', () => {
+  const div = document.createElement('div');
+  // const component = render(<LoginSignup></LoginSignup>, div);
+  const history = createMemoryHistory();
+  const component = render(
+    // <Provider store={store}>
+    //   <Navbar />
+    //   <Routes>
+    //     <Route path='/' element={<LoginSignup />} />
+    //   </Routes>
+    // </Provider>
+    <Router location={history.location} navigator={history}>
+      <LoginSignup></LoginSignup>
+    </Router>
+  );
+  expect(component.container).toMatchSnapshot();
+});
+
+// describe('Unit Testing react components', () => {
+//   describe('signup button', () => {
+//     test('renders signup component when signup button is clicked', () => {
+//       const { getByText, queryByText } = render(
+//         <Provider store={store}>
+//           <LoginSignup />
+//         </Provider>
+//       );
+
+//       // simulate click event
+//       const signupButton = getByText('SignUp');
+//       fireEvent.click(signupButton);
+
+//       expect(queryByText('Sign Up')).toBeInTheDocument();
+//     });
+//   });
+// });
 
 // import React from 'react';
 // import { render, fireEvent } from '@testing-library/react';

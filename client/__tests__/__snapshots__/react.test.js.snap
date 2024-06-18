@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test 1`] = `
+<div>
+  <div
+    class="wrapper"
+  >
+    <div
+      class="form-box"
+    >
+      <div
+        class="register-container"
+        id="register"
+      >
+        <div
+          class="top"
+        >
+          <div
+            class="oneLine"
+          >
+            <p>
+              Create a new Account
+            </p>
+            <span>
+              Sign Up
+            </span>
+          </div>
+          <header>
+            Login
+          </header>
+        </div>
+        <input
+          class="input-field"
+          name="username"
+          placeholder="Your Name"
+          type="text"
+          value=""
+        />
+        <input
+          class="input-field"
+          name="password"
+          placeholder="Password"
+          type="password"
+          value=""
+        />
+        <button
+          class="input-box"
+          id="submit"
+        >
+          Continue
+        </button>
+        <div
+          class="loginsignup-agree"
+        >
+          <input
+            id="termsCheckbox"
+            type="checkbox"
+          />
+          <label
+            for="termsCheckbox"
+          >
+            By Continuing, I agree to the terms of the use & privacy policy
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
