@@ -107,7 +107,7 @@ const LoginSignup = () => {
           </div>
         ) : (
           <div className="top">
-            <div className="oneLine">
+            <div className="oneLine" data-testid="signup">
               <p>Create a new Account</p>
               <span onClick={() => dispatch(setAuthView("SignUp"))}>Sign Up</span>
             </div>

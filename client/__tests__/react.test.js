@@ -46,23 +46,40 @@ test('test', () => {
   expect(component.container).toMatchSnapshot();
 });
 
+
+test('signup renders correctly', () => {
+  const div = document.createElement('div');
+  const history = createMemoryHistory();
+  
+  const onClickFunction = jest.fn();
+  const { getByTestId } = render(
+    <Router location={history.location} navigator={history}>
+    <LoginSignup onClickFunction={onClickFunction} />
+    </Router>
+  )
+  fireEvent.click(getByTestId('signup'))
+  expect(onClickFunction).toHaveBeenCalled();
+})
 // describe('Unit Testing react components', () => {
 //   describe('signup button', () => {
-//     test('renders signup component when signup button is clicked', () => {
-//       const { getByText, queryByText } = render(
-//         <Provider store={store}>
-//           <LoginSignup />
-//         </Provider>
-//       );
+    test('renders signup component when signup button is clicked', () => {
+      const div = document.createElement('div');
+  // const component = render(<LoginSignup></LoginSignup>, div);
+  const history = createMemoryHistory();
+      const { getByText, queryByText } = render(
+        <Router location={history.location} navigator={history}>
+          <LoginSignup />
+        </Router>
+      );
 
-//       // simulate click event
-//       const signupButton = getByText('SignUp');
-//       fireEvent.click(signupButton);
+      // simulate click event
+      const signupButton = getByText('SignUp');
+      fireEvent.click(signupButton);
 
-//       expect(queryByText('Sign Up')).toBeInTheDocument();
-//     });
-//   });
-// });
+      expect(getByText('Sign Up')).toBeInTheDocument();
+    });
+
+
 
 // import React from 'react';
 // import { render, fireEvent } from '@testing-library/react';
